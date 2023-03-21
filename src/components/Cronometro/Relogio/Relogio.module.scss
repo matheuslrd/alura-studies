@@ -5,6 +5,8 @@
   width: 3rem;
   padding: 8px 4px;
   border-radius: 10px;
+  display: flex;
+  justify-content: center;
 
   @media screen and (min-width:1280px) {
     height: 10.8rem;
