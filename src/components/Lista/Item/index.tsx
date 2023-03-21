@@ -5,29 +5,32 @@ interface Props extends ITarefa {
   selecionaTarefa: (tarefaSelecionada: ITarefa) => void
 }
 
-export default function Item(
-  {
-    tarefa,
-    tempo,
-    selecionado,
-    completado,
-    id,
-    selecionaTarefa
-  }: Props) {
-  console.log('item atual: ', { tarefa, tempo, selecionado, completado, id })
+export default function Item({
+  tarefa,
+  tempo,
+  selecionado,
+  completado,
+  id,
+  selecionaTarefa,
+}: Props) {
   return (
     <li
       className={`${style.item} ${selecionado ? style.itemSelecionado : ''} ${
         completado ? style.itemCompletado : ''
       }`}
-      onClick={() =>
-        selecionaTarefa({
-          tarefa,
-          tempo,
-          selecionado,
-          completado,
-          id,
-        })
+      onClick={
+        !completado
+          ? () =>
+              selecionaTarefa({
+                tarefa,
+                tempo,
+                selecionado,
+                completado,
+                id,
+              })
+          : () => {
+              // Não faz nada
+            }
       }
     >
       <h3>{tarefa}</h3>
